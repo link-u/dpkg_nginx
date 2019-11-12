@@ -2,6 +2,10 @@
 
 ## prework
 
+```
+git submodule update --init --recursive
+```
+
 ```bash
 tar xvf nginx-*.tar.gz
 cd nginx-*/

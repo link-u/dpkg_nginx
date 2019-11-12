@@ -52,5 +52,6 @@ ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 --with-pcre-jit \
 --with-openssl="../openssl-1.0.2t" \
 --with-zlib="../zlib-1.2.11" \
+--add-module=../ngx_brotli \
 --with-cc-opt="${cc_opt}" \
 --with-ld-opt="${ld_opt}"
