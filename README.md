@@ -20,7 +20,6 @@ bash all.sh
 
 ## その他
 
- -
  - [Manpages of debhelper in Debian testing — Debian Manpages](https://manpages.debian.org/testing/debhelper/index.html)
  - [Debian 管理者ハンドブック](https://debian-handbook.info/browse/ja-JP/stable/index.html)
    - [第 15 章 Debian パッケージの作成](https://debian-handbook.info/browse/ja-JP/stable/debian-packaging.html)
