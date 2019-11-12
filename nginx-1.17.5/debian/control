@@ -11,5 +11,6 @@ Homepage: https://nginx.org/
 Package: nginx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: nginx (<< 1.17.5)
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>

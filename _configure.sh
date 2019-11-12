@@ -53,5 +53,6 @@ ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 --with-openssl="../openssl-1.0.2t" \
 --with-zlib="../zlib-1.2.11" \
 --add-module=../ngx_brotli \
+--add-module=../nginx-rtmp-module \
 --with-cc-opt="${cc_opt}" \
 --with-ld-opt="${ld_opt}"

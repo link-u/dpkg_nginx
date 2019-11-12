@@ -1,3 +1,6 @@
 [submodule "ngx_brotli"]
 	path = ngx_brotli
 	url = git@github.com:google/ngx_brotli.git
+[submodule "nginx-rtmp-module"]
+	path = nginx-rtmp-module
+	url = git@github.com:arut/nginx-rtmp-module.git
