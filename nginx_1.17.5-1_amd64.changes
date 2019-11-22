@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Tue, 12 Nov 2019 14:41:40 +0900
+Source: nginx
+Binary: nginx
+Architecture: source amd64
+Version: 1.17.5-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>
+Changed-By: Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>
+Description:
+ nginx      - <insert up to 60 chars description>
+Changes:
+ nginx (1.17.5-1) unstable; urgency=medium
+ .
+   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+Checksums-Sha1:
+ 87773dbfc5f0e94cde45ea4ecf2c57737f0d00e0 863 nginx_1.17.5-1.dsc
+ 73045610446f26bfcc88d973e79b96d6a77ea70f 667188 nginx_1.17.5.orig.tar.xz
+ 2455ff7461c37efe1b989f3cc47627206717a107 3692 nginx_1.17.5-1.debian.tar.xz
+ 5a7d8666b9f5a32099c4463fdb024e176c12551d 8234680 nginx-dbgsym_1.17.5-1_amd64.ddeb
+ dcac27052ee09a52733a5357cf3ac2ad1f27b484 9461 nginx_1.17.5-1_amd64.buildinfo
+ e2adf8fed49adb2adc357960b7f834f07caebe3a 2057820 nginx_1.17.5-1_amd64.deb
+Checksums-Sha256:
+ eb930ba631a8cd911494e663367dbfa89e724aa2251a0c7e481fb141d749ef06 863 nginx_1.17.5-1.dsc
+ b4a432ded516dec0deb388fb7060d1ee89b9903028b7ed6a1b0e2b59b8d5227d 667188 nginx_1.17.5.orig.tar.xz
+ 55b49603ed308b2609ff4ef18769f01b770b87788c7f05d6649a11ddbe125737 3692 nginx_1.17.5-1.debian.tar.xz
+ 007ba172a6aa3dda393772da7cdaf1bff6ccadacfe1bafa4c1f9aacd143b5e0c 8234680 nginx-dbgsym_1.17.5-1_amd64.ddeb
+ 05a29fa6ea5ad34100a33805e57fdff034c6aedc476f4f9b0cc0859ee72b51c1 9461 nginx_1.17.5-1_amd64.buildinfo
+ 3f32eac38c460847bd797e1fdc15b27609f5c4f938637f35ac1218a7314cbc0b 2057820 nginx_1.17.5-1_amd64.deb
+Files:
+ 1908257e3b7876a40172e801807c3fd7 863 httpd optional nginx_1.17.5-1.dsc
+ e6c47789649bec680c5b2eff3e53024b 667188 httpd optional nginx_1.17.5.orig.tar.xz
+ 702d6eb620ed89a05579fbc071c19459 3692 httpd optional nginx_1.17.5-1.debian.tar.xz
+ a2e9656b4b2abb94bed3dd572f5372c8 8234680 debug optional nginx-dbgsym_1.17.5-1_amd64.ddeb
+ 55f5e66b7b6acf586ceeb9000dbf4cbe 9461 httpd optional nginx_1.17.5-1_amd64.buildinfo
+ d34b099d8721a68cbd79d57d3035a77d 2057820 httpd optional nginx_1.17.5-1_amd64.deb

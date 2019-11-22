@@ -1,0 +1,10 @@
+*.o
+*.dsc
+*.deb
+*.buildinfo
+*.ddeb
+zlib-*
+pcre-*
+openssl-*
+nginx-*/objs/
+nginx-*/Makefile
