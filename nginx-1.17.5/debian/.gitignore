@@ -1,6 +1,7 @@
 debhelper-build-stamp
 .DS_Store
 .debhelper
+*.debhelper
 *.deb
 *.dsc
 *.build
