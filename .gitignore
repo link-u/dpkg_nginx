@@ -6,7 +6,7 @@
 zlib-*
 pcre-*
 openssl-*
-nginx-*/objs/
-nginx-*/Makefile
+nginx/nginx-*/objs/
+nginx/nginx-*/Makefile
 !*.tar.gz
 
