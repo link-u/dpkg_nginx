@@ -8,3 +8,5 @@ pcre-*
 openssl-*
 nginx-*/objs/
 nginx-*/Makefile
+!*.tar.gz
+
