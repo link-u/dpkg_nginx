@@ -11,7 +11,8 @@ debhelper-build-stamp
 *.log
 *.substvars
 
-source/
+source/*
+!source/format
 tmp/
 libaom*/
 nginx/
