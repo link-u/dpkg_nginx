@@ -4,7 +4,7 @@ cc_opt="-g -O3 -fdebug-prefix-map=/data/builder/debuild/nginx-1.17.1/debian/debu
 ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 
 ./configure \
---prefix=/etc/nginx \
+--prefix=/usr/share/nginx \
 --sbin-path=/usr/sbin/nginx \
 --modules-path=/usr/lib/nginx/modules \
 --conf-path=/etc/nginx/nginx.conf \
