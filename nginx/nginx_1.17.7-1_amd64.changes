@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Mon, 06 Jan 2020 15:16:51 +0900
+Source: nginx
+Binary: nginx
+Architecture: source amd64
+Version: 1.17.7-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>
+Changed-By: Yoshimasa Hashida <yoshimasa.hashida@link-u.co.jp>
+Description:
+ nginx      - <insert up to 60 chars description>
+Changes:
+ nginx (1.17.7-1) unstable; urgency=medium
+ .
+   * Update package
+Checksums-Sha1:
+ a38f917fdc5d09d55dae5306c05260350e8ec7a7 863 nginx_1.17.7-1.dsc
+ d7d7f44d196a2a1bbb0eca9c84e9d4acdceb0808 670736 nginx_1.17.7.orig.tar.xz
+ 212d5914054b46e216cda812093c869f6a3a654b 4056 nginx_1.17.7-1.debian.tar.xz
+ 67ab079abe96a537165df5070c73a7e697ee8956 8243656 nginx-dbgsym_1.17.7-1_amd64.ddeb
+ 19677dcc4bcf4812d4383068a622418744a88eac 9057 nginx_1.17.7-1_amd64.buildinfo
+ 1094c366c18173492c2f5127d1d80bb8a175664d 2059828 nginx_1.17.7-1_amd64.deb
+Checksums-Sha256:
+ 0bebd3717a4f1556e2ab3c5cab019a09e7d4749edc698c2aeb1d88273ca70231 863 nginx_1.17.7-1.dsc
+ 136434e3a38054262c69b0688c29a149d27877dfebf87054d940417bb126b334 670736 nginx_1.17.7.orig.tar.xz
+ d7d434f6e99d4390222759609a20e13cfd3d8082eaf54b5e70002e74e9d185af 4056 nginx_1.17.7-1.debian.tar.xz
+ 90c455f1dad0788d006d6b33e436db0ffefbf1beab0fbdca2d4703c94bc2878c 8243656 nginx-dbgsym_1.17.7-1_amd64.ddeb
+ 14ef1f04acae2f2c7c480d2a95fb2400791a71e75e9c7c07193e5be292d4e80e 9057 nginx_1.17.7-1_amd64.buildinfo
+ 9bb49e85350a1810737c65ecd61d8fcb2f0036b698d26cce71b09d132cbdcd7d 2059828 nginx_1.17.7-1_amd64.deb
+Files:
+ c47242bc3d2c1891c7387375b897d2bf 863 httpd optional nginx_1.17.7-1.dsc
+ 7ddf0290ed9273d7070017d4edd40abf 670736 httpd optional nginx_1.17.7.orig.tar.xz
+ 91ce699786aeacb80b7b92691fbc9673 4056 httpd optional nginx_1.17.7-1.debian.tar.xz
+ 873066e2191acb2bc7b3112d403c3f47 8243656 debug optional nginx-dbgsym_1.17.7-1_amd64.ddeb
+ 4f248c2d6769012af4379dc36cb62282 9057 httpd optional nginx_1.17.7-1_amd64.buildinfo
+ d4e07528a2cc539e4e409d41404b6c89 2059828 httpd optional nginx_1.17.7-1_amd64.deb

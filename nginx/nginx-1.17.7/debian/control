@@ -1,0 +1,16 @@
+Source: nginx
+Section: httpd
+Priority: optional
+Maintainer: Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>
+Build-Depends: debhelper (>= 10), autotools-dev, libxml2-dev, libxslt1-dev, libgd-dev, libgeoip-dev
+Standards-Version: 4.1.2
+Homepage: https://nginx.org/
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/nginx.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/nginx.git
+
+Package: nginx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: nginx (<< 1.17.7)
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
