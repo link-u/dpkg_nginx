@@ -6,6 +6,8 @@
 git submodule update --init --recursive
 ```
 
+- [Download Nginx tarball (source code)]("http://nginx.org/en/download.html")
+
 ```bash
 tar xvf nginx-*.tar.gz
 cd nginx-*/
