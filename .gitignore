@@ -9,4 +9,5 @@ openssl-*
 nginx/nginx-*/objs/
 nginx/nginx-*/Makefile
 !*.tar.gz
-
+nginx/nginx_*.debian.tar.xz
+nginx/nginx_*_amd64.changes
