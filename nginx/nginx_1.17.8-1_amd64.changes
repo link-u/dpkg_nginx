@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Thu, 30 Jan 2020 14:05:34 +0900
+Source: nginx
+Binary: nginx
+Architecture: source amd64
+Version: 1.17.8-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>
+Changed-By: linku <linku@ubuntu1804-infra-x>
+Description:
+ nginx      - <insert up to 60 chars description>
+Changes:
+ nginx (1.17.8-1) unstable; urgency=medium
+ .
+   * Update package
+Checksums-Sha1:
+ 21d41b167e489263feda886b3ef0669c4dbe5b25 863 nginx_1.17.8-1.dsc
+ 24d6e69a7e6983002889d7effeead1fe4a206883 670804 nginx_1.17.8.orig.tar.xz
+ 52279edcb98ff770d45d45aaf0b6cbd758e1d199 4100 nginx_1.17.8-1.debian.tar.xz
+ 9793ab116b6f1a3ea2dffa915b63ec9db3084de8 8226072 nginx-dbgsym_1.17.8-1_amd64.ddeb
+ f020d0af6d9b0c99d9274e3cafb6fad2074c0048 9084 nginx_1.17.8-1_amd64.buildinfo
+ 9b4efb0d152fbe3a20436bdeb5cbee91c0708a41 2066704 nginx_1.17.8-1_amd64.deb
+Checksums-Sha256:
+ e657cb1a5791e7af060772d77cc8c9f64e9dd54f7652bcf43a1a227d0e558b3f 863 nginx_1.17.8-1.dsc
+ 9b553acb9ecfb7b6c3c178d2e838f3330455ce3699fa30531332647a31b11fd4 670804 nginx_1.17.8.orig.tar.xz
+ 7192faa27737bcb0eabd034f0f99e5b60d4de1fef089568a018287b212671860 4100 nginx_1.17.8-1.debian.tar.xz
+ becaf5e0fe200a99c1c71fbc3d442369a0c42d5fa35821f4ab388cacd8af2127 8226072 nginx-dbgsym_1.17.8-1_amd64.ddeb
+ cdf29d97538533f8b7eb0648e47888981ce45992b8ff4dc0ed9669d7d27f7578 9084 nginx_1.17.8-1_amd64.buildinfo
+ e60a99c91d5f34cdbd7c2cd1e90b0e5132d52c0c0605ead63affeec2a27ef9b0 2066704 nginx_1.17.8-1_amd64.deb
+Files:
+ 433b2675e28489f0a699154954da0d6f 863 httpd optional nginx_1.17.8-1.dsc
+ 0a99dfeed7f61b5c10a3a6717a7f5f16 670804 httpd optional nginx_1.17.8.orig.tar.xz
+ dd58fb7c1560aff58af48522a17b4cf4 4100 httpd optional nginx_1.17.8-1.debian.tar.xz
+ f22b56167e4ff8eab336a5dc29e11b52 8226072 debug optional nginx-dbgsym_1.17.8-1_amd64.ddeb
+ 356de7bdda87ec6c8355c7099a7c3c69 9084 httpd optional nginx_1.17.8-1_amd64.buildinfo
+ 387c6db6ff6f22b04b862b5b314eaef1 2066704 httpd optional nginx_1.17.8-1_amd64.deb

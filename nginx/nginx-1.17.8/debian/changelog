@@ -1,3 +1,9 @@
+nginx (1.17.8-1) unstable; urgency=medium
+
+  * Update package
+
+ -- linku <linku@ubuntu1804-infra-x>  Thu, 30 Jan 2020 14:05:34 +0900
+
 nginx (1.17.7-1) unstable; urgency=medium
 
   * Update package 
