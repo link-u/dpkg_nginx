@@ -1,0 +1,49 @@
+name: Build debian package on push or release-tags.
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Checkout submodules
+        shell: bash
+        run: |
+          sed -i -e 's/git\@github\.com\:/https\:\/\/github.com\//g' .gitmodules
+          git submodule init
+          git submodule sync --recursive
+          git submodule update
+          git submodule foreach bash -c "sed -i -e 's/git\@github\.com\:/https\:\/\/github.com\//g' .gitmodules || true"
+          git submodule foreach git submodule sync --recursive
+          git submodule foreach git submodule init
+          git submodule foreach git submodule update --init --force --recursive
+
+      - name: Install debhelper dh-make
+        shell: bash
+        run: |
+          sudo apt install -y debhelper dh-make
+
+      - name: Install dependent packages for building nginx
+        shell: bash
+        run: |
+          sudo apt install -y libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
+
+      - name: Build debian package
+        shell: bash
+        env:
+          REF: ${{ github.ref }}
+          COMMIT: ${{ github.sha }}
+        run: |
+          if [ "${REF:0:11}" = "refs/tags/v" ]; then
+            sed -i -r "s/^(\w+) \(([0-9\.]+)(-[A-Z]+)?\)/\1 (${REF:11})/" debian/changelog
+          else
+            sed -i -r "s/^(\w+) \(([0-9\.]+)(-[A-Z]+)?\)/\1 (\2-$(date +%Y%m%d%H%M%S)${COMMIT:0:7})/" debian/changelog
+          fi
+          bash scripts/build-debian-package.sh
