@@ -59,4 +59,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: nginx
-          path: ${{ steps.get_deb_name.outputs.filename }}
+          path: nginx/${{ steps.get_deb_name.outputs.filename }}
