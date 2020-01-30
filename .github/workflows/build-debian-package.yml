@@ -48,3 +48,15 @@ jobs:
             sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z]+)?\)/\1 (\2\3$(date +DATE%Y%m%dTIME%H%M%S)CommitID${COMMIT:0:7})/" ${nginx_dir}/debian/changelog
           fi
           bash all.sh
+
+      - name: Get debian package name
+        shell: bash
+        run: |
+          echo "::set-output name=filename::$(basename $(find . -type f -name \*.deb))"
+        id: get_deb_name
+
+      - name: Upload result
+        uses: actions/upload-artifact@v1
+        with:
+          name: nginx
+          path: ${{ steps.get_deb_name.outputs.filename }}
