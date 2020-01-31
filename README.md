@@ -1,10 +1,26 @@
 # How to build
 
-## prework
+## Prework
 
+### git リポジトリからクローン
+
+```bash
+git clone --recurse-submodules --recursive git@github.com:link-u/dpkg_nginx.git
 ```
-git submodule update --init --recursive
+
+### 依存するパッケージのインストール
+
+```bash
+sudo apt install debhelper dh-make libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
 ```
+  
+## Build!
+
+```bash
+bash all.sh
+```
+
+## Memo
 
 - [Download Nginx tarball (source code)](http://nginx.org/en/download.html)
 
@@ -12,12 +28,6 @@ git submodule update --init --recursive
 tar xvf nginx-*.tar.gz
 cd nginx-*/
 dh_make --createorig --single
-```
-
-## build!
-
-```bash
-bash all.sh
 ```
 
 ## その他
