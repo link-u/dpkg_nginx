@@ -25,15 +25,10 @@ jobs:
           git submodule foreach git submodule init
           git submodule foreach git submodule update --init --force --recursive
 
-      - name: Install debhelper dh-make
+      - name: Install debhelper dh-make, and dependent packages for building nginx
         shell: bash
         run: |
-          sudo apt install -y debhelper dh-make
-
-      - name: Install dependent packages for building nginx
-        shell: bash
-        run: |
-          sudo apt install -y libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
+          sudo apt install -y debhelper dh-make libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
 
       - name: Build debian package
         shell: bash
