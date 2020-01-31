@@ -43,9 +43,9 @@ jobs:
         run: |
           nginx_dir="$(ls -1vd nginx/*/ | sed 's/\/$//g' | tail -n 1)"
           if [ "${REF:0:11}" = "refs/tags/v" ]; then
-            sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(date +DATE%Y%m%d)RLEASE${RELEASE})/" ${nginx_dir}/debian/changelog
+            sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(date +%Y%m%d).${REF:10})/" ${nginx_dir}/debian/changelog
           else
-            sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(date +DATE%Y%m%dTIME%H%M%S)CommitID${COMMIT:0:7})/" ${nginx_dir}/debian/changelog
+            sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(date +%Y%m%d.%H%M%S).${COMMIT:0:7})/" ${nginx_dir}/debian/changelog
           fi
           bash all.sh
 
