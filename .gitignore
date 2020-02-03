@@ -6,6 +6,7 @@
 zlib-*
 pcre-*
 openssl-*
+nginx/debian/changelog
 nginx/nginx-*/debian/
 nginx/nginx-*/objs/
 nginx/nginx-*/Makefile
