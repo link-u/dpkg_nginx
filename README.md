@@ -15,9 +15,8 @@ sudo apt install debhelper dh-make libxml2-dev libxslt1-dev libgd-dev libgeoip-d
 ```
   
 ## Build!
-
 ```bash
-bash all.sh
+bash scripts/all.sh 
 ```
 
 ## Memo

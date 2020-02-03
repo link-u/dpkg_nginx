@@ -40,12 +40,16 @@ jobs:
           REF: ${{ github.ref }}
           COMMIT: ${{ github.sha }}
         run: |
+          nginx_src_dir=$(basename "$(ls -1vd nginx/nginx-*.tar.gz | tail -n 1)" .tar.gz)
+          cp "scripts/changelog_template" "nginx/debian/changelog"
+          sed -i -r "s/X.Y.Z/${nginx_src_dir:6}/g" nginx/debian/changelog
+          sed -i "s/%DATE%/$(LC_ALL=C TZ=JST-9 date '+%a, %d %b %Y %H:%M:%S %z')/g" nginx/debian/changelog
           if [ "${REF:0:11}" = "refs/tags/v" ]; then
-            sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(TZ=JST-9 date +%Y%m%d).${REF:10})/" nginx/debian/changelog
+            sed -i -r "s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(TZ=JST-9 date +%Y%m%d).${REF:10})/" nginx/debian/changelog
           else
-            sed -i -r "0,/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/ s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(TZ=JST-9 date +%Y%m%d.%H%M%S).${COMMIT:0:7})/" nginx/debian/changelog
+            sed -i -r "s/^(\w+) \(([0-9\.]+)(-[0-9a-zA-Z\.]+)?\)/\1 (\2-$(TZ=JST-9 date +%Y%m%d.%H%M%S).${COMMIT:0:7})/" nginx/debian/changelog
           fi
-          bash all.sh
+          bash scripts/build.sh
 
       - name: Get debian package name
         shell: bash
