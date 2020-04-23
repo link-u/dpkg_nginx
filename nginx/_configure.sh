@@ -48,9 +48,9 @@ ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 --with-stream_geoip_module \
 --with-stream_ssl_module \
 --with-stream_ssl_preread_module \
---with-pcre="../../pcre/pcre-8.43" \
+--with-pcre="../../pcre/pcre-8.44" \
 --with-pcre-jit \
---with-openssl="../../openssl/openssl-1.1.1d" \
+--with-openssl="../../openssl/openssl-1.1.1g" \
 --with-zlib="../../zlib/zlib-1.2.11" \
 --add-module=../../ngx_brotli \
 --add-module=../../nginx-rtmp-module \
