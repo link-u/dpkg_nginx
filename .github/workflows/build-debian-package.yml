@@ -40,13 +40,14 @@ jobs:
           REF: ${{ github.ref }}
           COMMIT: ${{ github.sha }}
         run: |
+          code_name="$(lsb_release -cs)"
           cp "scripts/changelog_template" "nginx/debian/changelog"
           sed -i -r "s/%DATE%/$(LC_ALL=C TZ=JST-9 date '+%a, %d %b %Y %H:%M:%S %z')/g" nginx/debian/changelog
           if [ "${REF:0:11}" = "refs/tags/v" ]; then
-            sed -i -r "s/X.Y.Z-alpha/${REF:11}.$(TZ=JST-9 date +%Y%m%d)/g" nginx/debian/changelog
+            sed -i -r "s/X.Y.Z-alpha/${REF:11}.$(TZ=JST-9 date +%Y%m%d)+${code_name}/g" nginx/debian/changelog
           else
             nginx_src_dir=$(basename "$(ls -1vd nginx/nginx-*.tar.gz | tail -n 1)" .tar.gz)
-            sed -i -r "s/X.Y.Z-alpha/${nginx_src_dir:6}-$(TZ=JST-9 date +%Y%m%d.%H%M%S).${COMMIT:0:7}/g" nginx/debian/changelog
+            sed -i -r "s/X.Y.Z-alpha/${nginx_src_dir:6}-$(TZ=JST-9 date +%Y%m%d.%H%M%S).${COMMIT:0:7}+${code_name}/g" nginx/debian/changelog
           fi
           bash scripts/build.sh
 
