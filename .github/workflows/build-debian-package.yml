@@ -108,6 +108,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: nginx_bionic/${{ steps.get_deb_name.outputs.filename }}
+          asset_path: nginx_${{ matrix.codename }}/${{ steps.get_deb_name.outputs.filename }}
           asset_name: ${{ steps.get_deb_name.outputs.filename }}
           asset_content_type: application/vnd.debian.binary-package
