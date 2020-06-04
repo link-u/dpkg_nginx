@@ -75,21 +75,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        codename: [bionic, focal]
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: nginx_${{ matrix.codename }}
-
-      - name: Get debian package name
-        shell: bash
-        run: |
-          echo "::set-output name=filename::$(basename $(find ./nginx_${{ matrix.codename }} -type f -name \*.deb))"
-        id: get_deb_name
-
       - name: Create release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -100,14 +86,33 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: true
           prerelease: true
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
 
+  upload:
+    needs: release
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        codename: [bionic, focal]
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: nginx_${{ matrix.codename }}
+          path: "."
+      - name: Get debian package name
+        shell: bash
+        run: |
+          echo "::set-output name=filename::$(find . -type f -name \*.deb)"
+        id: get_deb_name
       - name: Upload release asset
         id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: nginx_${{ matrix.codename }}/${{ steps.get_deb_name.outputs.filename }}
+          upload_url: ${{ needs.release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ${{ steps.get_deb_name.outputs.filename }}
           asset_name: ${{ steps.get_deb_name.outputs.filename }}
           asset_content_type: application/vnd.debian.binary-package
