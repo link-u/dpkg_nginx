@@ -82,7 +82,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v1
         with:
-          path: "."
+          name: nginx_${{ matrix.codename }}
 
       - name: Get debian package name
         shell: bash
