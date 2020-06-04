@@ -12,8 +12,16 @@ on:
       - master
 
 jobs:
-  build_for_bionic:
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+        include:
+          - os: ubuntu-18.04
+            codename: bionic
+          - os: ubuntu-20.04
+            codename: focal
     steps:
       - uses: actions/checkout@v2
 
@@ -60,23 +68,26 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v1
         with:
-          name: nginx_bionic
+          name: nginx_${{ matrix.codename }}
           path: nginx/${{ steps.get_deb_name.outputs.filename }}
 
-  release_for_bionic:
+  release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: build_for_bionic
-    runs-on: ubuntu-18.04
+    needs: build
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        codename: [bionic, focal]
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v1
         with:
-          name: nginx_bionic
+          path: "."
 
       - name: Get debian package name
         shell: bash
         run: |
-          echo "::set-output name=filename::$(basename $(find ./nginx_bionic -type f -name \*.deb))"
+          echo "::set-output name=filename::$(basename $(find ./nginx_${{ matrix.codename }} -type f -name \*.deb))"
         id: get_deb_name
 
       - name: Create release
