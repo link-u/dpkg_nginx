@@ -59,7 +59,7 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v1
         with:
-          name: nginx_${{ matrix.codename }}
+          name: ${{ matrix.codename }}
           path: nginx/${{ steps.get_deb_name.outputs.filename }}
 
   release:
@@ -90,12 +90,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: nginx_${{ matrix.codename }}
-          path: "."
+          name: ${{ matrix.codename }}
+          path: artifact
       - name: Get debian package name
         shell: bash
         run: |
-          echo "::set-output name=filename::$(find . -type f -name \*.deb)"
+          echo "::set-output name=filename::$(find artifact/ -type f -name \*.deb)"
         id: get_deb_name
       - name: Upload release asset
         id: upload-release-asset
@@ -103,7 +103,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ${{ steps.get_deb_name.outputs.filename }}
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: artifact/${{ steps.get_deb_name.outputs.filename }}
           asset_name: ${{ steps.get_deb_name.outputs.filename }}
           asset_content_type: application/vnd.debian.binary-package
