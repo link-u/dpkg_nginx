@@ -60,7 +60,7 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
 
   upload:
-    needs: releas
+    needs: release
     runs-on: ubuntu-latest
     strategy:
       matrix:
