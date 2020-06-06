@@ -13,45 +13,21 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-        include:
-          - os: ubuntu-18.04
-            codename: bionic
-          - os: ubuntu-20.04
-            codename: focal
+        codename: [bionic, focal]
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
           fetch-depth: 0
 
-      - name: Install debhelper dh-make, and dependent packages for building nginx
-        shell: bash
-        run: |
-          sudo apt install -y debhelper dh-make libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
-
-      - name: Generate changelog
-        shell: bash
-        env:
-          REF: ${{ github.ref }}
-          COMMIT: ${{ github.sha }}
-        run: |
-          code_name="$(lsb_release -cs)"
-          cp "scripts/changelog_template" "nginx/debian/changelog"
-          sed -i -r "s/%DATE%/$(LC_ALL=C TZ=JST-9 date '+%a, %d %b %Y %H:%M:%S %z')/g" nginx/debian/changelog
-          if [ "${REF:0:11}" = "refs/tags/v" ]; then
-            sed -i -r "s/X.Y.Z-alpha/${REF:11}.$(TZ=JST-9 date +%Y%m%d)+${code_name}/g" nginx/debian/changelog
-          else
-            nginx_src_dir=$(basename "$(ls -1vd nginx/nginx-*.tar.gz | tail -n 1)" .tar.gz)
-            sed -i -r "s/X.Y.Z-alpha/${nginx_src_dir:6}-$(TZ=JST-9 date +%Y%m%d.%H%M%S).${COMMIT:0:7}+${code_name}/g" nginx/debian/changelog
-          fi
-
       - name: Build debian package
-        shell: bash
-        run: bash scripts/build.sh
+        uses: link-u/execute-on-separated-ubuntu@master
+        with:
+          script: scripts/all.sh
+          on: ${{ matrix.codename }}
 
       - name: Get debian package name
         shell: bash
@@ -68,7 +44,7 @@ jobs:
   release:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Create release
         id: create_release
@@ -84,8 +60,8 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
 
   upload:
-    needs: release
-    runs-on: ubuntu-20.04
+    needs: releas
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         codename: [bionic, focal]
