@@ -29,17 +29,11 @@ jobs:
           script: scripts/all.sh
           on: ${{ matrix.codename }}
 
-      - name: Get debian package name
-        shell: bash
-        run: |
-          echo "::set-output name=filename::$(basename $(find . -type f -name \*.deb))"
-        id: get_deb_name
-
       - name: Upload result
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.codename }}
-          path: nginx/${{ steps.get_deb_name.outputs.filename }}
+          path: nginx/*.deb
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
