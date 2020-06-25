@@ -33,7 +33,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.codename }}
-          path: nginx/*.deb
+          path: |
+            nginx/*.deb
+            nginx/*.ddeb
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
