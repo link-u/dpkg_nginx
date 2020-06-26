@@ -68,7 +68,7 @@ jobs:
           path: ${{ matrix.codename }}
       - name: Create a zip
         shell: bash
-        run: zip ${{ matrix.codename }}.zip ${{ matrix.codename }}
+        run: zip ${{ matrix.codename }}.zip ${{ matrix.codename }}/*
       - name: Upload release asset
         uses: actions/upload-release-asset@v1.0.2
         env:
