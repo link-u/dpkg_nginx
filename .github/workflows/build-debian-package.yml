@@ -66,19 +66,51 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ${{ matrix.codename }}
-          path: artifact
-      - name: Get debian package name
+          path: ${{ matrix.codename }}
+      - name: Create a zip
         shell: bash
-        run: |
-          echo "::set-output name=filename::$(find artifact/ -type f -name \*.deb)"
-        id: get_deb_name
+        run: zip ${{ matrix.codename }}.zip ${{ matrix.codename }}
       - name: Upload release asset
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
-          asset_path: artifact/${{ steps.get_deb_name.outputs.filename }}
-          asset_name: ${{ steps.get_deb_name.outputs.filename }}
-          asset_content_type: application/vnd.debian.binary-package
+          asset_path: ${{ matrix.codename }}.zip
+          asset_name: ${{ matrix.codename }}.zip
+          asset_content_type: application/zip
+
+  deploy:
+    needs: upload
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        codename: [bionic, focal]
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ matrix.codename }}
+          path: ${{ matrix.codename }}
+      - name: Listup files
+        shell: bash
+        run: find .
+      - name: Deploy
+        shell: bash
+        run: |
+          printenv DEPLOY_SCRIPT | base64 -d > deploy.sh
+          bash deploy.sh upload "${{ matrix.codename }}" "nginx" "${{ matrix.codename }}"
+        env:
+          DEPLOY_SCRIPT: ${{ secrets.YOROZU_DEPLOY_SCRIPT }}
+
+  sign:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sign
+        shell: bash
+        run: |
+          printenv DEPLOY_SCRIPT | base64 -d > deploy.sh
+          bash deploy.sh sign
+        env:
+          DEPLOY_SCRIPT: ${{ secrets.YOROZU_DEPLOY_SCRIPT }}
