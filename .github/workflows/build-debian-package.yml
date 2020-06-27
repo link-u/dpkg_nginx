@@ -1,4 +1,4 @@
-name: Build debian package on push or release-tags or pull request.
+name: Build debian packages
 
 on:
   push:
