@@ -35,6 +35,7 @@ jobs:
           path: |
             nginx/*.deb
             nginx/*.ddeb
+
   test:
     needs: build
     runs-on: ubuntu-latest
