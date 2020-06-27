@@ -1,25 +1,14 @@
-# How to build
+# Nginx automated builds
 
-## Prework
+![Build debian packages](https://github.com/link-u/dpkg_nginx/workflows/Build%20debian%20packages/badge.svg)
 
-### git リポジトリからクローン
+## How to build manually
+
+### clone git repository recursively.
 
 ```bash
 git clone --recurse-submodules --recursive git@github.com:link-u/dpkg_nginx.git
-```
-
-### 依存するパッケージのインストール
-
-```bash
-sudo apt install debhelper dh-make libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
-```
-  
-## Build!
-
-手動でビルドする方法を以下に示す.
-
-```bash
-bash scripts/all.sh 
+bash scripts/all.sh
 ```
 
 ## Memo
