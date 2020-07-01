@@ -70,7 +70,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           commitish: ${{ github.sha }}
           draft: true
-          prerelease: true
+          prerelease: false
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
 
