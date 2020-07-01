@@ -68,6 +68,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
+          commitish: ${{ github.sha }}
           draft: true
           prerelease: true
     outputs:
