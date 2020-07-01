@@ -12,7 +12,7 @@ updates:
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
-    interval: "daily"
+    interval: "monthly"
     time: "02:00"
     timezone: Asia/Tokyo
   reviewers:
