@@ -1,0 +1,12 @@
+pull_request_rules:
+  - name: Automatic merge on dependabot when it's okay.
+    conditions:
+      - "author=dependabot[bot]"
+      - "status-success=build (focal)"
+      - "status-success=build (bionic)"
+      - "status-success=test (focal)"
+      - "status-success=test (bionic)"
+      - "#status-failure=0"
+    actions:
+      merge:
+        method: merge
