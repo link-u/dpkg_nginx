@@ -4,3 +4,6 @@
 [submodule "nginx-rtmp-module"]
 	path = nginx-rtmp-module
 	url = git@github.com:arut/nginx-rtmp-module.git
+[submodule "nginx-module-vts"]
+	path = nginx-module-vts
+	url = git://github.com/vozlt/nginx-module-vts.git
