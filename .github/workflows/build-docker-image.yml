@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          fetch-depth: 0
       - name: Set up QEMU
         id: qemu
         uses: docker/setup-qemu-action@v1
@@ -53,8 +56,8 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ steps.calc_tag.outputs.tag }}
-            ghcr.io/${{ github.repository }}:sha-${{ steps.calc_tag.outputs.sha }}
+            ghcr.io/link-u/nginx:latest
+            ghcr.io/link-u/nginx:${{ steps.calc_tag.outputs.tag }}
+            ghcr.io/link-u/nginx:sha-${{ steps.calc_tag.outputs.sha }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
