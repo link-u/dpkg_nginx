@@ -1,0 +1,60 @@
+name: Publish Docker image
+
+on:
+  push:
+    branches-ignore:
+      - dependabot/**
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1
+        with:
+          image: tonistiigi/binfmt:latest
+          platforms: all
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+      - name: Show Buildx info
+        run: |
+          echo Name: ${{ steps.buildx.outputs.name }}
+          echo Platforms: ${{ steps.buildx.outputs.platforms }}
+      - name: Login to Github Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GH_ACTION_GHCR_TOKEN_LEDYBA_Z }}
+      - name: Calc tag
+        run: |
+          TAG=""
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/.* ]]; then
+            TAG="${GITHUB_REF:11}"
+          elif [[ "${GITHUB_REF}" =~ ^refs/tags/.* ]]; then
+            TAG="${GITHUB_REF:10}"
+          elif [[ -z "${GITHUB_REF}" ]]; then
+            TAG="${GITHUB_SHA}"
+          fi
+          echo "::set-output name=tag::${TAG}"
+          echo "::set-output name=sha::${GITHUB_SHA:0:8}"
+        id: calc_tag
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        id: docker_build
+        with:
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ steps.calc_tag.outputs.tag }}
+            ghcr.io/${{ github.repository }}:sha-${{ steps.calc_tag.outputs.sha }}
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
