@@ -1,9 +1,9 @@
 [submodule "ngx_brotli"]
 	path = ngx_brotli
-	url = https://github.com:google/ngx_brotli.git
+	url = https://github.com/google/ngx_brotli.git
 [submodule "nginx-rtmp-module"]
 	path = nginx-rtmp-module
-	url = https://github.com:arut/nginx-rtmp-module.git
+	url = https://github.com/arut/nginx-rtmp-module.git
 [submodule "nginx-module-vts"]
 	path = nginx-module-vts
 	url = https://github.com/vozlt/nginx-module-vts.git
