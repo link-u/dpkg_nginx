@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 export NAMESERVER=$(cat /etc/resolv.conf | grep "nameserver" | awk '{print $2}' | tr '\n' ' ')
 

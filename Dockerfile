@@ -20,4 +20,5 @@ RUN apt-get -y update \
     && apt-get install -y /tmp/*.deb && rm /tmp/*.deb
 COPY "./docker/entrypoint.sh" "/entrypoint.sh"
 COPY "./docker/resolver.conf" "/resolver.conf.template"
-CMD ["sh", "/entrypoint.sh"]
+RUN chmod a+x "/entrypoint.sh"
+ENTRYPOINT ["/entrypoint.sh"]
