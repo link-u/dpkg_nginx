@@ -1,6 +1,10 @@
 FROM ubuntu:latest as builder
 ENV DEBIAN_FRONTEND=noninteractive
 
+WORKDIR /tmp/
+COPY . .
+COPY .git/ ./.git/
+
 RUN ls -alh
 
 RUN apt-get -y update \
