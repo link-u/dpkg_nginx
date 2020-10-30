@@ -5,22 +5,27 @@
  */
 
 
-#ifndef _NGX_STREAM_SSL_H_INCLUDED_
-#define _NGX_STREAM_SSL_H_INCLUDED_
+#ifndef _NGX_MAIL_SSL_H_INCLUDED_
+#define _NGX_MAIL_SSL_H_INCLUDED_
 
 
 #include <ngx_config.h>
 #include <ngx_core.h>
-#include <ngx_stream.h>
+#include <ngx_mail.h>
+
+
+#define NGX_MAIL_STARTTLS_OFF   0
+#define NGX_MAIL_STARTTLS_ON    1
+#define NGX_MAIL_STARTTLS_ONLY  2
 
 
 typedef struct {
-    ngx_msec_t       handshake_timeout;
-
+    ngx_flag_t       enable;
     ngx_flag_t       prefer_server_ciphers;
 
     ngx_ssl_t        ssl;
 
+    ngx_uint_t       starttls;
     ngx_uint_t       listen;
     ngx_uint_t       protocols;
 
@@ -34,9 +39,6 @@ typedef struct {
     ngx_array_t     *certificates;
     ngx_array_t     *certificate_keys;
 
-    ngx_array_t     *certificate_values;
-    ngx_array_t     *certificate_key_values;
-
     ngx_str_t        dhparam;
     ngx_str_t        ecdh_curve;
     ngx_str_t        client_certificate;
@@ -46,6 +48,7 @@ typedef struct {
     ngx_str_t        ciphers;
 
     ngx_array_t     *passwords;
+    ngx_array_t     *conf_commands;
 
     ngx_shm_zone_t  *shm_zone;
 
@@ -54,10 +57,10 @@ typedef struct {
 
     u_char          *file;
     ngx_uint_t       line;
-} ngx_stream_ssl_conf_t;
+} ngx_mail_ssl_conf_t;
 
 
-extern ngx_module_t  ngx_stream_ssl_module;
+extern ngx_module_t  ngx_mail_ssl_module;
 
 
-#endif /* _NGX_STREAM_SSL_H_INCLUDED_ */
+#endif /* _NGX_MAIL_SSL_H_INCLUDED_ */
