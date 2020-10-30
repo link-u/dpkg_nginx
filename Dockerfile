@@ -1,4 +1,5 @@
 FROM ubuntu:latest as builder
+ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
 COPY . .
@@ -10,6 +11,7 @@ RUN apt-get -y update &&\
 RUN bash scripts/all.sh
 
 FROM ubuntu:latest
+ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /
 
