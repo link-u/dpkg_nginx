@@ -1,12 +1,12 @@
 [submodule "ngx_brotli"]
 	path = ngx_brotli
-	url = git@github.com:google/ngx_brotli.git
+	url = https://github.com:google/ngx_brotli.git
 [submodule "nginx-rtmp-module"]
 	path = nginx-rtmp-module
-	url = git@github.com:arut/nginx-rtmp-module.git
+	url = https://github.com:arut/nginx-rtmp-module.git
 [submodule "nginx-module-vts"]
 	path = nginx-module-vts
-	url = git://github.com/vozlt/nginx-module-vts.git
+	url = https://github.com/vozlt/nginx-module-vts.git
 [submodule "nginx-upstream-dynamic-servers"]
 	path = nginx-upstream-dynamic-servers
-	url = git://github.com/GUI/nginx-upstream-dynamic-servers.git
+	url = https://github.com/GUI/nginx-upstream-dynamic-servers.git
