@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cc_opt="-g -O3 -fdebug-prefix-map=/data/builder/debuild/nginx-1.17.1/debian/debuild-base/nginx-1.17.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2"
+cc_opt="-g -O3 -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2"
 ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 
 ./configure \
@@ -55,5 +55,6 @@ ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 --add-module=../../ngx_brotli \
 --add-module=../../nginx-rtmp-module \
 --add-module=../../nginx-module-vts \
+--add-module=../../nginx-upstream-dynamic-servers \
 --with-cc-opt="${cc_opt}" \
 --with-ld-opt="${ld_opt}"
