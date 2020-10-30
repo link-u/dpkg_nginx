@@ -6,9 +6,10 @@ COPY . .
 
 RUN ls -alh
 
-RUN apt-get -y update &&\
-    apt-get install -y --no-install-recommends build-essential debhelper devscripts debmake equivs && \
-    apt-get install -y --no-install-recommends lsb-release git bash
+RUN apt-get -y update \
+    && apt-get install -y --no-install-recommends \
+                       build-essential debhelper devscripts debmake equivs \
+                       lsb-release git bash
 
 RUN bash scripts/all.sh
 
