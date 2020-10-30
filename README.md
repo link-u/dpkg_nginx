@@ -1,6 +1,7 @@
 # nginx automated builds (debian package + Docker image)
 
 [![Build debian packages](https://github.com/link-u/dpkg_nginx/workflows/Build%20debian%20packages/badge.svg)](https://github.com/link-u/dpkg_nginx/actions?query=workflow%3A%22Build+debian+packages%22)
+[![Publish Docker image](https://github.com/link-u/dpkg_nginx/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/link-u/dpkg_nginx/actions?query=workflow%3A%22Publish+Docker+image%22)
 
 # How to use
 
