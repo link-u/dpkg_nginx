@@ -1,6 +1,16 @@
-# Nginx automated builds
+# nginx automated builds (debian package + Docker image)
 
 [![Build debian packages](https://github.com/link-u/dpkg_nginx/workflows/Build%20debian%20packages/badge.svg)](https://github.com/link-u/dpkg_nginx/actions?query=workflow%3A%22Build+debian+packages%22)
+
+# How to use
+
+## How to use debian packages
+
+Please download from [Releases](https://github.com/link-u/dpkg_nginx/releases). Ubuntu 18.04(bionic) and 20.04(focal) are supported.
+
+## How to use docker image
+
+Please use `ghcr.io/link-u/nginx:latest`. This image is based upon `ubuntu:latest`.
 
 ## How to build manually
 
