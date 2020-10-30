@@ -9,15 +9,15 @@ RUN apt-get -y update \
                        build-essential debhelper devscripts debmake equivs \
                        lsb-release git bash \
     && bash scripts/all.sh
-RUN ls -alh /tmp/nginx/
 
 FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
 COPY --from=builder /tmp/nginx/*.deb .
-RUN ls -alh /tmp/
-RUN apt-get install -y /tmp/*.deb && rm /tmp/*.deb
+RUN apt-get -y update \
+    && apt-get install -y libgd3 libgeoip1 libxml2 libxslt1.1 \
+    && apt-get install -y /tmp/*.deb && rm /tmp/*.deb
 
 WORKDIR /
 ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
