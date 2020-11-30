@@ -56,5 +56,6 @@ ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 --add-module=../../nginx-rtmp-module \
 --add-module=../../nginx-module-vts \
 --add-module=../../nginx-upstream-dynamic-servers \
+--add-module=../../headers-more-nginx-module \
 --with-cc-opt="${cc_opt}" \
 --with-ld-opt="${ld_opt}"
