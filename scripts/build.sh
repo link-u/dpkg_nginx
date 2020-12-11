@@ -9,7 +9,7 @@ root_dir=$(readlink -f $(cd $(dirname $0) && cd .. && pwd))
 nginx_src_dir=$(basename "$(ls -1vd ${root_dir}/nginx/nginx-*.tar.gz | tail -n 1)" .tar.gz);
 
 ## 依存するパッケージの解凍
-env --chdir "${root_dir}/openssl" tar xvf openssl-1.1.1h.tar.gz;
+env --chdir "${root_dir}/openssl" tar xvf openssl-1.1.1i.tar.gz;
 env --chdir "${root_dir}/pcre"    tar xvf pcre-8.44.tar.gz;
 env --chdir "${root_dir}/zlib"    tar xvf zlib-1.2.11.tar.gz;
 
