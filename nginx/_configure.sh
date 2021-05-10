@@ -50,7 +50,7 @@ ld_opt="-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed"
 --with-stream_ssl_preread_module \
 --with-pcre="../../pcre/pcre-8.44" \
 --with-pcre-jit \
---with-openssl="../../openssl/openssl-1.1.1i" \
+--with-openssl="../../openssl/openssl-1.1.1k" \
 --with-zlib="../../zlib/zlib-1.2.11" \
 --add-module=../../ngx_brotli \
 --add-module=../../nginx-rtmp-module \
