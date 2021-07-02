@@ -5,7 +5,7 @@ set -eu
 ## git リポジトリ上の root のパスを取得
 root_dir="$(cd "$(dirname "$(readlink -f "$0")")" && cd .. && pwd)"
 
-cd "${root_dir}" && exit -1
+cd "${root_dir}"
 
 ## ビルド時に必要なパッケージのインストール
 env --chdir="${root_dir}/nginx" \
